@@ -1,0 +1,30 @@
+{
+  "name": "test-labmedia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx webpack --mode production",
+    "start": "npx webpack-dev-server --mode development",
+    "lint": "eslint src",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "keywords": [],
+  "author": "Ilya Khokhanov",
+  "license": "ISC",
+  "homepage": "https://ilyakhokhanov.github.io/test-labmedia",
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-webpack-plugin": "^4.0.1",
+    "gh-pages": "^6.1.1",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.5",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3"
+  }
+}
