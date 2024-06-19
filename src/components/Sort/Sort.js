@@ -1,4 +1,4 @@
-import addElement from '../../utils/utilits';
+import { addElement } from '../../utils/utilits';
 import './Sort.css';
 
 export default function Sort() {

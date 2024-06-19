@@ -1,4 +1,4 @@
-import addElement from '../../utils/utilits';
+import { addElement } from '../../utils/utilits';
 import searchIcon from '../../assets/images/search-icon.svg';
 import cleanIcon from '../../assets/images/clean-icon.svg';
 import './Search.css';

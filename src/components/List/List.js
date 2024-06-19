@@ -1,4 +1,4 @@
-import addElement from '../../utils/utilits';
+import { addElement } from '../../utils/utilits';
 import ListItem from '../ListItem/ListItem';
 import './List.css';
 
@@ -9,31 +9,7 @@ const headerFields = [
   'Рейтинг',
 ];
 
-const listItems = [
-  {
-    id: 5150,
-    username: 'sfsdfsdfsdf sdfsdf',
-    email: 'sdfsdf@kjkj.fdg',
-    registration_date: '21.04.1994',
-    rating: 5,
-  },
-  {
-    id: 3545,
-    username: 'sfsdfsdfsdf sdfsdf',
-    email: 'sdfsdf@kjkj.fdg',
-    registration_date: '21.04.1994',
-    rating: 5,
-  },
-  {
-    id: 345345,
-    username: 'sfsdfsdfsdf sdfsdf',
-    email: 'sdfsdf@kjkj.fdg',
-    registration_date: '21.04.1994',
-    rating: 5,
-  },
-];
-
-export default function List() {
+export default function List(listItems) {
   const listElem = addElement('div', 'list');
 
   const listHeader = addElement('div', 'list-header');
