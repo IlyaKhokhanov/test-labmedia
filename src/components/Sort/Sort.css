@@ -1,0 +1,18 @@
+.sort {
+  margin: 72px 25px 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-gray-color);
+}
+
+.sort-item {
+  border-bottom: 1px dashed var(--text-gray-color);
+  cursor: pointer;
+}
+
+.sort-item-active {
+  color: #333;
+  border-color: #333;
+}
