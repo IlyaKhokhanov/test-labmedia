@@ -9,9 +9,12 @@ const headerFields = [
   'Рейтинг',
 ];
 
-export default function List(listItems) {
-  const listElem = addElement('div', 'list');
+export default function List(currentData, page, deleteItem) {
+  const start = (page - 1) * 5;
+  const end = start + 5;
+  const data = currentData.slice(start, end);
 
+  const listElem = addElement('div', 'list');
   const listHeader = addElement('div', 'list-header');
 
   headerFields.forEach((el) => {
@@ -22,9 +25,11 @@ export default function List(listItems) {
 
   listElem.append(listHeader);
 
-  listItems.forEach((el) => {
-    listElem.append(ListItem(el));
-  });
+  if (data) {
+    data.forEach((el) => {
+      listElem.append(ListItem(el, deleteItem));
+    });
+  }
 
   return listElem;
 }

@@ -3,9 +3,8 @@ import searchIcon from '../../assets/images/search-icon.svg';
 import cleanIcon from '../../assets/images/clean-icon.svg';
 import './Search.css';
 
-export default function Search() {
+export default function Search(search, sort, clearFilter) {
   const searchElem = addElement('div', 'search');
-
   const searchInputWrapper = addElement('div', 'search-input-wrapper');
 
   const searchInputImg = addElement('img', 'search-input-img');
@@ -16,17 +15,25 @@ export default function Search() {
   searchInput.placeholder = 'Поиск по имени или e-mail';
 
   searchInputWrapper.append(searchInputImg, searchInput);
+  searchElem.append(searchInputWrapper);
 
-  const cleanBtn = addElement('button', 'clean-btn');
+  if (search || sort) {
+    const cleanBtn = addElement('button', 'clean-btn');
+    cleanBtn.addEventListener('click', clearFilter);
 
-  const cleanBtnImg = addElement('img', 'clean-btn-img');
-  cleanBtnImg.src = cleanIcon;
-  cleanBtnImg.alt = 'Clean';
+    const cleanBtnImg = addElement('img', 'clean-btn-img');
+    cleanBtnImg.src = cleanIcon;
+    cleanBtnImg.alt = 'Clean';
 
-  const cleanBtnText = addElement('span', 'clean-btn-text', 'Очистить фильтр');
+    const cleanBtnText = addElement(
+      'span',
+      'clean-btn-text',
+      'Очистить фильтр',
+    );
 
-  cleanBtn.append(cleanBtnImg, cleanBtnText);
+    cleanBtn.append(cleanBtnImg, cleanBtnText);
+    searchElem.append(cleanBtn);
+  }
 
-  searchElem.append(searchInputWrapper, cleanBtn);
   return searchElem;
 }

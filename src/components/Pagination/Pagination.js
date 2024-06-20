@@ -1,17 +1,18 @@
 import { addElement } from '../../utils/utilits';
 import './Pagination.css';
 
-const pages = 10;
-
-export default function Pagination() {
+export default function Pagination(currentPage, arrLength, changePage) {
   const paginationWrapper = addElement('div', 'pagination');
-  const activePage = 1;
 
   let count = 1;
-  while (count <= pages) {
+  while (count <= Math.ceil(arrLength / 5)) {
     const paginationNumber = addElement('div', 'pagination-number', count);
-    if (count === activePage) {
+    if (count === currentPage) {
       paginationNumber.classList.add('pagination-nubmer-active');
+    } else {
+      paginationNumber.addEventListener('click', () => {
+        changePage(+paginationNumber.textContent);
+      });
     }
     paginationWrapper.append(paginationNumber);
     count += 1;
