@@ -3,7 +3,7 @@ import searchIcon from '../../assets/images/search-icon.svg';
 import cleanIcon from '../../assets/images/clean-icon.svg';
 import './Search.css';
 
-export default function Search(search, sort, clearFilter) {
+export default function Search(search, sort, clearFilter, searchFilter) {
   const searchElem = addElement('div', 'search');
   const searchInputWrapper = addElement('div', 'search-input-wrapper');
 
@@ -13,6 +13,10 @@ export default function Search(search, sort, clearFilter) {
 
   const searchInput = addElement('input', 'search-input');
   searchInput.placeholder = 'Поиск по имени или e-mail';
+  if (search) {
+    searchInput.value = search;
+  }
+  searchInput.addEventListener('input', () => searchFilter(searchInput.value));
 
   searchInputWrapper.append(searchInputImg, searchInput);
   searchElem.append(searchInputWrapper);

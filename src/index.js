@@ -13,26 +13,35 @@ const state = {
   sort: null,
   search: null,
   page: 1,
+  activeSearch: false,
 };
 
 function renderPage() {
   root.innerHTML = '';
   root.append(
-    Search(state.search, state.sort, clearFilter),
+    Search(state.search, state.sort, clearFilter, searchFilter),
     Sort(state.sort, sortList),
     List(state.currentData, state.page, deleteItem),
-    Pagination(state.page, state.currentData.length, changePage)
+    Pagination(state.page, state.currentData.length, changePage),
   );
+  if (state.activeSearch) {
+    document.querySelector('.search-input').focus();
+  }
 }
 
 fetchData().then((data) => {
-  state.data = data.slice();
-  state.currentData = data.slice();
-  renderPage();
+  if (Array.isArray(data)) {
+    state.data = data.slice();
+    state.currentData = data.slice();
+    renderPage();
+  } else {
+    // root.append();
+  }
 });
 
 function changePage(page) {
   state.page = page;
+  state.activeSearch = false;
   renderPage();
 }
 
@@ -41,10 +50,12 @@ function clearFilter() {
   state.sort = null;
   state.search = null;
   state.page = 1;
+  state.activeSearch = false;
   renderPage();
 }
 
 function deleteItem(id) {
+  state.activeSearch = false;
   state.data = state.data.filter((el) => el.id !== id);
   state.currentData = state.currentData.filter((el) => el.id !== id);
   if (state.page - 1 === state.currentData.length / 5) state.page -= 1;
@@ -52,18 +63,21 @@ function deleteItem(id) {
 }
 
 function sortList(sort) {
-  state.sort = sort;
+  if (sort) {
+    state.sort = sort;
+    state.activeSearch = false;
+  }
   state.page = 1;
-  switch (sort) {
+  switch (state.sort) {
     case 'ascDate':
       state.currentData = state.currentData.sort(
-        (a, b) => new Date(b.registration_date) - new Date(a.registration_date)
+        (a, b) => new Date(b.registration_date) - new Date(a.registration_date),
       );
       break;
 
     case 'descDate':
       state.currentData = state.currentData.sort(
-        (a, b) => new Date(a.registration_date) - new Date(b.registration_date)
+        (a, b) => new Date(a.registration_date) - new Date(b.registration_date),
       );
       break;
 
@@ -80,5 +94,18 @@ function sortList(sort) {
       break;
   }
 
+  renderPage();
+}
+
+function searchFilter(query) {
+  state.search = query;
+  state.activeSearch = true;
+  state.currentData = state.data.filter((el) => {
+    const regexp = new RegExp(state.search.trim(), 'gi');
+    return el.username.match(regexp) || el.email.match(regexp);
+  });
+  if (state.sort) {
+    sortList();
+  }
   renderPage();
 }

@@ -6,9 +6,10 @@ function addElement(tagName, className, text) {
 }
 
 function fetchData() {
-  return fetch('https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users')
+  return fetch('https://5ebbb8e5f2cfeb001697d05c.mockapi.io/user')
     .then((res) => res.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((err) => err);
 }
 
 function formatDate(date) {

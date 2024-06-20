@@ -25,10 +25,13 @@ export default function List(currentData, page, deleteItem) {
 
   listElem.append(listHeader);
 
-  if (data) {
+  if (currentData.length) {
     data.forEach((el) => {
       listElem.append(ListItem(el, deleteItem));
     });
+  } else {
+    const emptyList = addElement('div', 'empty-list', 'Список пуст');
+    listElem.append(emptyList);
   }
 
   return listElem;
