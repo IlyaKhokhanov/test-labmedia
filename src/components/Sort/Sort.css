@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.sort-item-active {
+.sort-item--active {
   color: #333;
   border-color: #333;
 }
