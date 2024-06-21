@@ -13,20 +13,20 @@ export default function Modal(id, deleteItem) {
   const modal = addElement('div', 'modal');
   const modalText = addElement(
     'div',
-    'modal-text',
+    'modal__text',
     'Вы уверены, что хотите удалить пользователя?',
   );
 
-  const modalBtnWrapper = addElement('div', 'modal-btn-wrapper');
+  const modalBtnWrapper = addElement('div', 'modal-btn__wrapper');
 
-  const modalBtnDelete = addElement('button', 'modal-btn-delete', 'Да');
+  const modalBtnDelete = addElement('button', 'modal-btn__delete', 'Да');
   modalBtnDelete.addEventListener('click', () => {
     deleteItem(id);
     overlay.remove();
     document.body.style.overflow = '';
   });
 
-  const modalBtnClose = addElement('button', 'modal-btn-close', 'Нет');
+  const modalBtnClose = addElement('button', 'modal-btn__close', 'Нет');
   modalBtnClose.addEventListener('click', () => {
     overlay.remove();
     document.body.style.overflow = '';

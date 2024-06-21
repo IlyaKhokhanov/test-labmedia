@@ -7,12 +7,25 @@
   color: var(--text-gray-color);
 }
 
-.sort-item {
+.sort__item {
   border-bottom: 1px dashed var(--text-gray-color);
   cursor: pointer;
 }
 
-.sort-item--active {
+.sort__item--active {
   color: #333;
   border-color: #333;
+}
+
+@media (max-width: 500px) {
+  .sort {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (hover: hover) {
+  .sort__item:hover {
+    opacity: 0.6;
+  }
 }

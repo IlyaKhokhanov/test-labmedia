@@ -7,7 +7,7 @@
   gap: 15px;
 }
 
-.pagination-number {
+.pagination__number {
   width: 22px;
   height: 22px;
   display: flex;
@@ -21,7 +21,14 @@
   cursor: pointer;
 }
 
-.pagination-nubmer-active {
+.pagination__nubmer--active {
   background: var(--main-blue-color);
   color: #fff;
+  cursor: default;
+}
+
+@media (hover: hover) {
+  .pagination__number:not(.pagination__nubmer--active):hover {
+    opacity: 0.7;
+  }
 }

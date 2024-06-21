@@ -1,7 +1,9 @@
+/* eslint-disable no-use-before-define */
 import List from './components/List/List';
 import Pagination from './components/Pagination/Pagination';
 import Search from './components/Search/Search';
 import Sort from './components/Sort/Sort';
+import Error from './components/Error/Error';
 import { fetchData } from './utils/utilits';
 import './style.css';
 
@@ -24,8 +26,10 @@ function renderPage() {
     List(state.currentData, state.page, deleteItem),
     Pagination(state.page, state.currentData.length, changePage),
   );
-  if (state.activeSearch) {
-    document.querySelector('.search-input').focus();
+  if (state.activeSearch !== false) {
+    const input = document.querySelector('.search__input');
+    input.focus();
+    input.setSelectionRange(+state.activeSearch, +state.activeSearch);
   }
 }
 
@@ -35,7 +39,8 @@ fetchData().then((data) => {
     state.currentData = data.slice();
     renderPage();
   } else {
-    // root.append();
+    document.body.innerHTML = '';
+    document.body.append(Error());
   }
 });
 
@@ -93,15 +98,17 @@ function sortList(sort) {
       state.currentData = state.data;
       break;
   }
-
   renderPage();
 }
 
-function searchFilter(query) {
+function searchFilter(query, caret) {
   state.search = query;
-  state.activeSearch = true;
+  state.activeSearch = caret;
   state.currentData = state.data.filter((el) => {
-    const regexp = new RegExp(state.search.trim(), 'gi');
+    const regexp = new RegExp(
+      state.search.trimStart().replace(/(?=\W)/g, '\\'),
+      'gi',
+    );
     return el.username.match(regexp) || el.email.match(regexp);
   });
   if (state.sort) {

@@ -1,5 +1,5 @@
-import { addElement } from '../../utils/utilits';
 import ListItem from '../ListItem/ListItem';
+import { addElement } from '../../utils/utilits';
 import './List.css';
 
 const headerFields = [
@@ -15,7 +15,7 @@ export default function List(currentData, page, deleteItem) {
   const data = currentData.slice(start, end);
 
   const listElem = addElement('div', 'list');
-  const listHeader = addElement('div', 'list-header');
+  const listHeader = addElement('div', 'list__header');
 
   headerFields.forEach((el) => {
     const headerField = addElement('div');
@@ -30,7 +30,7 @@ export default function List(currentData, page, deleteItem) {
       listElem.append(ListItem(el, deleteItem));
     });
   } else {
-    const emptyList = addElement('div', 'empty-list', 'Список пуст');
+    const emptyList = addElement('div', 'empty__list', 'Список пустой');
     listElem.append(emptyList);
   }
 

@@ -6,9 +6,9 @@ export default function Pagination(currentPage, arrLength, changePage) {
 
   let count = 1;
   while (count <= Math.ceil(arrLength / 5)) {
-    const paginationNumber = addElement('div', 'pagination-number', count);
+    const paginationNumber = addElement('div', 'pagination__number', count);
     if (count === currentPage) {
-      paginationNumber.classList.add('pagination-nubmer-active');
+      paginationNumber.classList.add('pagination__nubmer--active');
     } else {
       paginationNumber.addEventListener('click', () => {
         changePage(+paginationNumber.textContent);

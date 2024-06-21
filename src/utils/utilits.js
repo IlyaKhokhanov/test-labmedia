@@ -1,3 +1,5 @@
+const url = 'https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users';
+
 function addElement(tagName, className, text) {
   const elem = document.createElement(tagName);
   if (className) elem.classList.add(className);
@@ -6,7 +8,7 @@ function addElement(tagName, className, text) {
 }
 
 function fetchData() {
-  return fetch('https://5ebbb8e5f2cfeb001697d05c.mockapi.io/user')
+  return fetch(url)
     .then((res) => res.json())
     .then((data) => data)
     .catch((err) => err);
