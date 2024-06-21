@@ -1,1 +1,0 @@
-(()=>{"use strict";document.body.innerHTML="hello",console.log("hello")})();
