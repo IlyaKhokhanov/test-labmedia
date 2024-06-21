@@ -10,6 +10,7 @@
 .sort__item {
   border-bottom: 1px dashed var(--text-gray-color);
   cursor: pointer;
+  transition: opacity 0.2s ease-in;
 }
 
 .sort__item--active {

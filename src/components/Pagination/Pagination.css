@@ -19,6 +19,7 @@
   font-size: 12px;
   box-shadow: 0 3px 20px 0 rgba(126, 126, 126, 0.2);
   cursor: pointer;
+  transition: opacity 0.2s ease-in;
 }
 
 .pagination__nubmer--active {
