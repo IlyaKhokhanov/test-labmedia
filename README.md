@@ -9,5 +9,6 @@ To make the application work, you need to follow the instructions.
 - Clone this repo: `$ git clone https://github.com/IlyaKhokhanov/test-labmedia.git`.
 - Go to downloaded folder: `$ cd test-labmedia`.
 - Install dependencies: `$ npm install`.
-- Start server: `$ npm start`.
+- To run the application locally, use: `$ npm start`.
+- Еo build an application, use: `$ npm run build`.
 - Now you can use application: `http://localhost:8080/`.
